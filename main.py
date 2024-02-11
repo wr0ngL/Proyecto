@@ -1,0 +1,44 @@
+import pygame
+
+pygame.init()
+
+clock = pygame.time.Clock()
+fps = 60
+
+
+#Pantalla
+
+bottom_panel = 150
+screen_width = 800
+screen_height = 486 + bottom_panel
+
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption('Combate')
+
+#Imagenes
+#Fondo
+background_img = pygame.image.load('img/Background/Campo.jpg').convert_alpha()
+
+def draw_bg():
+    screen.blit(background_img, (0, 0))
+
+#Panel
+panel_img = pygame.image.load('img/Panel/panelaco.png').convert_alpha()
+
+def draw_panel():
+    screen.blit(panel_img, (0, screen_height - bottom_panel))
+
+run = True
+while run:
+
+    clock.tick(fps)
+    draw_bg()
+    draw_panel()
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+
+    pygame.display.update()
+
+pygame.quit() 
